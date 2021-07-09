@@ -1,14 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { routes } from './utils/constants';
+import App from './App';
+import Dashboard from './components/Dashboard';
 
 ReactDOM.render(
   <React.StrictMode>
     <App>
-      Inner Component
+      <Router>
+        <Switch>
+          <Route
+            exact path="/"
+            render={() => <Redirect to={routes.dashboard} />}
+          />
+          <Route
+            path={routes.dashboard}
+            component={Dashboard}/>
+          <Route component={() => <div>Page Not Found</div>} />
+        </Switch>
+      </Router>
     </App>
   </React.StrictMode>,
   document.getElementById('root')
