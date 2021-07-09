@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { ReactNode } from 'react';
+import { MuiThemeProvider, StylesProvider, jssPreset } from '@material-ui/core/styles';
+import { create } from 'jss';
+
+import { theme } from './styles/theme';
 import './App.css';
 
-function App() {
+const insertionPoint = document.getElementById('jss-insertion-point') as HTMLElement;
+
+const jss = create({
+  ...jssPreset(),
+  insertionPoint,
+})
+
+type Props = {
+  children: ReactNode
+};
+
+const App = ({ children }: Props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StylesProvider jss={jss}>
+      <MuiThemeProvider theme={theme}>
+        <div className="App">
+          <div className="container">
+            {children}
+          </div>
+        </div>
+      </MuiThemeProvider>
+    </StylesProvider>
   );
 }
 
