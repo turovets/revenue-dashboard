@@ -8,13 +8,19 @@ import {
   TProductCategoriesRevenues
 } from '../../../services/productCategories/ProductCategoryService';
 import './CategoriesRevenues.scss';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const CategoriesRevenues = () => {
   const [data, setData] = useState<TProductCategoriesRevenues[]>([]);
   const [valueTypeFilter, setValueTypeFilter] = useState<ValueType>(ValueType.Revenues);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    ProductCategoryService.getProductCategoriesRevenues().then(setData);
+    setIsLoading(true);
+    ProductCategoryService.getProductCategoriesRevenues().then((res) => {
+      setData(res);
+      setIsLoading(false);
+    }).catch(console.log);
   }, [])
 
   const tData = useMemo(() => data.reduce<{x: string[], y: number[]}>((acc, curr) => {
@@ -25,7 +31,10 @@ const CategoriesRevenues = () => {
 
   return (
     <div className="CategoriesRevenues-root">
-      <Switcher onChangeHandler={setValueTypeFilter} activeItem={valueTypeFilter} items={Object.values(ValueType)} />
+      {isLoading && <LinearProgress className="Dashboard-progress" />}
+      <div className="Dashboard-filters">
+        <Switcher onChangeHandler={setValueTypeFilter} activeItem={valueTypeFilter} items={Object.values(ValueType)} disabled={isLoading} /><div/>
+      </div>
       <Report title="Total Revenues Per Products Categories" type={ReportType.Bar} data={tData} />
     </div>
   )

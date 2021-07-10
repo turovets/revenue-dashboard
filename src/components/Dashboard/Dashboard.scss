@@ -1,4 +1,27 @@
+@import 'src/styles/variables';
+
 .Dashboard-title {
   font-weight: normal;
   margin-bottom: 40px;
+}
+
+.Dashboard-progress {
+  top: -182px;
+  width: calc(100% + 80px);
+  left: -40px;
+}
+
+.Dashboard-filters {
+  > div {
+    display: block;
+  }
+  @include tablet {
+    display: flex;
+    gap: 30px;
+
+    > div {
+      width: 100%;
+      display: unset;
+    }
+  }
 }

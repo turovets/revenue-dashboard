@@ -1,7 +1,7 @@
 import LineChart from '../shared/charts/LineChart';
 import BarChart from '../shared/charts/BarChart';
 
-export interface Report {
+export interface ReportProps {
   title: string;
   type: ReportType;
   // TODO: fix type
@@ -18,7 +18,7 @@ const Report = ({
   title,
   type,
   data,
-}: Report) => {
+}: ReportProps) => {
 
   const renderReport = () => {
     switch(type) {
