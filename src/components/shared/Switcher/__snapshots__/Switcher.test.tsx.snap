@@ -3,11 +3,12 @@
 exports[`Switcher should render component correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiButtonGroup-root Switcher-root"
+    class="MuiButtonGroup-root"
     role="group"
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined Switcher-btn Switcher-selected"
+      style="width: calc(100% / 2);"
       tabindex="0"
       type="button"
     >
@@ -22,6 +23,7 @@ exports[`Switcher should render component correctly 1`] = `
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined Switcher-btn "
+      style="width: calc(100% / 2);"
       tabindex="0"
       type="button"
     >

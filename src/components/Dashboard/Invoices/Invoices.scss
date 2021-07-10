@@ -1,0 +1,21 @@
+@import 'src/styles/variables';
+
+.Invoices-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.Invoices-filters {
+  > div {
+    display: block;
+  }
+  @include tablet {
+    display: flex;
+    gap: 30px;
+
+    > div {
+      width: 100%;
+      display: unset;
+    }
+  }
+}
