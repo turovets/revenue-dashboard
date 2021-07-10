@@ -1,3 +1,6 @@
+import LineChart from '../LineChart';
+import BarChart from '../BarChart';
+
 export interface Report {
   title: string;
   type: ReportType;
@@ -13,15 +16,15 @@ export enum ReportType {
 const Report = ({
   title,
   type,
-  // data,
+  data,
 }: Report) => {
 
   const renderReport = () => {
     switch(type) {
       case ReportType.Bar:
-        return () => <div>Bar Chart</div>;
+        return <BarChart data={data} />;
         case ReportType.Line:
-        return () => <div>Line Chart</div>;
+        return <LineChart data={data} />;
         case ReportType.Table:
         return <div>Table</div>;
       default:

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import Invoices from './Invoices';
 
 import { useRouteTabs } from '../../lib/hooks/useRouteTabs';
+import CategoriesRevenue from './CategoriesRevenues';
 
 const TabBuilder = () => {
   const routes = useMemo(() => [
@@ -12,8 +13,8 @@ const TabBuilder = () => {
     },
     {
       label: 'Categories Revenue',
-      TabComponent: () => <div>CategoriesRevenue</div>,
-      tabUrl: '/dashboard/categories-revenue',
+      TabComponent: CategoriesRevenue,
+      tabUrl: '/dashboard/categories-revenues',
     },
   ], []);
   const { tabs, reactRoutes } = useRouteTabs(routes);
