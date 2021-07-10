@@ -24,11 +24,12 @@ const Switcher = ({
   };
 
   return (
-    <ButtonGroup className="Switcher-root" disabled={disabled}>
+    <ButtonGroup disabled={disabled}>
       {
         items.map((item) => (
           <Button
             key={item}
+            style={{ width: `calc(100% / ${items.length})` }}
             className={`Switcher-btn ${activeItem === item ? 'Switcher-selected' : ''}`}
             onClick={onBtnClick(item)}
           >
@@ -40,4 +41,4 @@ const Switcher = ({
   );
 };
 
-export default memo(Switcher)     ;
+export default memo(Switcher);

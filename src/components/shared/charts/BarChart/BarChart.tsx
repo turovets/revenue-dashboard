@@ -1,8 +1,6 @@
 import { memo } from 'react';
 import Plot from 'react-plotly.js';
 
-import './BarChart.scss';
-
 export type BarChartData = {
   x: string[];
   y: number[];
@@ -20,7 +18,8 @@ const BarChart = ({
   return (
     <Plot
       data={[{ ...data, type: 'bar' }]}
-      layout={ { width: 800, height: 640, title } }
+      layout={ { height: 640, title } }
+      config={{ responsive: true }}
     />
   );
 };

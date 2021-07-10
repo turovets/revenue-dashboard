@@ -7,6 +7,7 @@ import {
   ProductCategoryService,
   TProductCategoriesRevenues
 } from '../../../services/productCategories/ProductCategoryService';
+import './CategoriesRevenues.scss';
 
 const CategoriesRevenues = () => {
   const [data, setData] = useState<TProductCategoriesRevenues[]>([]);
@@ -23,10 +24,10 @@ const CategoriesRevenues = () => {
   }, { x: [], y: [] }), [data, valueTypeFilter]);
 
   return (
-    <>
+    <div className="CategoriesRevenues-root">
       <Switcher onChangeHandler={setValueTypeFilter} activeItem={valueTypeFilter} items={Object.values(ValueType)} />
       <Report title="Total Revenues Per Products Categories" type={ReportType.Bar} data={tData} />
-    </>
+    </div>
   )
 }
 

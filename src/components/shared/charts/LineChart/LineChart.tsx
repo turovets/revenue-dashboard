@@ -1,24 +1,26 @@
 import { memo } from 'react';
+import Plot from 'react-plotly.js';
 
-import './LineChart.scss';
-
-export type LineChartDataItem = {
-  date: string;
-  value: number;
+export type LineChartData = {
+  x: Date[];
+  y: number[];
 }
 type LineChartProps = {
-  data: LineChartDataItem[];
+  title: string;
+  data: LineChartData;
 };
 
 const LineChart = ({
+  title,
   data,
 }: LineChartProps) => {
 
   return (
-    <>
-      Line Chart Component
-      {data.map(({ date, value }, index) => <div key={index}>{date}: {value}</div>)}
-    </>
+    <Plot
+      data={[data]}
+      layout={ { height: 640, title } }
+      config={{ responsive: true }}
+    />
   );
 };
 

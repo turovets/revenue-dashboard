@@ -8,11 +8,19 @@ $common-background-color: #F4F4F4;
 $theme-mainColor: #3d3d3d;
 $common-text-primary: rgba($theme-mainColor, 0.62);
 
-// Breakpoints
-$desktop-width: 960px;
+// container width
 $globalContainerWidth: 1330px;
 
+// Breakpoints
+$desktop-width: 960px;
+$tablet-width: 760px;
+
 //mixins
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
 @mixin desktop {
   @media (min-width: #{$desktop-width}) {
     @content;

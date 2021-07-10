@@ -25,7 +25,7 @@ const Report = ({
       case ReportType.Bar:
         return <BarChart title={title} data={data} />;
         case ReportType.Line:
-        return <LineChart data={data} />;
+        return <LineChart title={title} data={data} />;
         case ReportType.Table:
         return <div>Table</div>;
       default:
