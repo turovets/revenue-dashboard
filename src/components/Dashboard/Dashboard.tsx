@@ -4,7 +4,7 @@ import './Dashboard.scss';
 const Dashboard = () => {
   return (
     <div>
-      <h3 className="Dashboard-title">Dashboard Page</h3>
+      <h3 className="Dashboard-title">Company Revenues Dashboard</h3>
       <TabBuilder />
     </div>
   )

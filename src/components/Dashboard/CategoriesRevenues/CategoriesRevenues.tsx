@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import Report, { ReportType } from '../../Report/Report';
 import {  ValueType } from '../types';
@@ -16,15 +16,16 @@ const CategoriesRevenues = () => {
     ProductCategoryService.getProductCategoriesRevenues().then(setData);
   }, [])
 
-  const tData = data.map((i) => ({
-    name: i.category_name,
-    value: valueTypeFilter === ValueType.Revenues ? i.total_revenue : i.total_margin,
-  }))
+  const tData = useMemo(() => data.reduce<{x: string[], y: number[]}>((acc, curr) => {
+    acc.x.push(curr.category_name);
+    acc.y.push(valueTypeFilter === ValueType.Revenues ? curr.total_revenue : curr.total_margin);
+    return acc;
+  }, { x: [], y: [] }), [data, valueTypeFilter]);
 
   return (
     <>
       <Switcher onChangeHandler={setValueTypeFilter} activeItem={valueTypeFilter} items={Object.values(ValueType)} />
-      <Report title="Revenues By Categories" type={ReportType.Bar} data={tData} />
+      <Report title="Total Revenues Per Products Categories" type={ReportType.Bar} data={tData} />
     </>
   )
 }

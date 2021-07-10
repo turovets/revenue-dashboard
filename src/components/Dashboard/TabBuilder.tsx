@@ -12,7 +12,7 @@ const TabBuilder = () => {
       tabUrl: '/dashboard/invoices',
     },
     {
-      label: 'Categories Revenue',
+      label: 'Categories Revenues',
       TabComponent: CategoriesRevenue,
       tabUrl: '/dashboard/categories-revenues',
     },

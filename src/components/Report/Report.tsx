@@ -1,10 +1,11 @@
-import LineChart from '../LineChart';
-import BarChart from '../BarChart';
+import LineChart from '../shared/charts/LineChart';
+import BarChart from '../shared/charts/BarChart';
 
 export interface Report {
   title: string;
   type: ReportType;
-  data: any[];
+  // TODO: fix type
+  data: any;
 }
 
 export enum ReportType {
@@ -22,7 +23,7 @@ const Report = ({
   const renderReport = () => {
     switch(type) {
       case ReportType.Bar:
-        return <BarChart data={data} />;
+        return <BarChart title={title} data={data} />;
         case ReportType.Line:
         return <LineChart data={data} />;
         case ReportType.Table:
@@ -33,10 +34,9 @@ const Report = ({
   }
 
   return (
-    <div>
-      <h4>{title}</h4>
+    <>
       {renderReport()}
-    </div>
+    </>
   )
 }
 
