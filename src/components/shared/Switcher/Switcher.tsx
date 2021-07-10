@@ -6,11 +6,11 @@ import './Switcher.scss';
 
 type SwitcherItem = string;
 type SwitcherProps = {
-  disabled?: boolean
-  activeItem: SwitcherItem
-  items: string[]
+  disabled?: boolean;
+  activeItem: SwitcherItem;
+  items: string[];
   // TODO: make switcher generic to pass data type
-  onChangeHandler: Dispatch<SetStateAction<any>>
+  onChangeHandler: Dispatch<SetStateAction<any>>;
 };
 
 const Switcher = ({

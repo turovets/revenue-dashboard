@@ -5,12 +5,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab, { TabProps } from '@material-ui/core/Tab';
 
 type Config = {
-  label: string,
-  TabComponent: React.ComponentType<any>,
-  tabUrl: string,
-  disabled?: boolean,
-  hidden?: boolean,
-  customRoutes?: string[],
+  label: string;
+  TabComponent: React.ComponentType<any>;
+  tabUrl: string;
+  disabled?: boolean;
+  hidden?: boolean;
+  customRoutes?: string[];
 }[];
 
 export const useRouteTabs = (config: Config): { reactRoutes: React.ReactElement, tabs: React.ReactElement } => {

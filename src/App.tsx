@@ -13,7 +13,7 @@ const jss = create({
 })
 
 type Props = {
-  children: ReactNode
+  children: ReactNode;
 };
 
 const App = ({ children }: Props) => {
