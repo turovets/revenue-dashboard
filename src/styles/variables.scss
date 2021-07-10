@@ -5,6 +5,9 @@ $common-color-primary: #006CB7;
 $common-fontSize: 13px;
 $common-background-color: #F4F4F4;
 
+$theme-mainColor: #3d3d3d;
+$common-text-primary: rgba($theme-mainColor, 0.62);
+
 // Breakpoints
 $desktop-width: 960px;
 $globalContainerWidth: 1330px;

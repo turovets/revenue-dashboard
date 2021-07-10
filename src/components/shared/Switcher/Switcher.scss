@@ -1,0 +1,24 @@
+@import 'src/styles/variables';
+
+.Switcher-root {
+  width: 100%;
+}
+// TODO: for some reason library styles renders with bigger priority than component ones.
+//  Need to investigate and remove !important
+
+.Switcher-btn {
+  color: $common-text-primary !important;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.Switcher-selected {
+  border-color: $common-color-primary !important;
+  color: $common-color-primary !important;
+
+  &:not(:last-child) {
+    border-right-color: initial;
+  }
+}
