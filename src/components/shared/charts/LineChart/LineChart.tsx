@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import Plot from 'react-plotly.js';
 
 export type LineChartData = {
@@ -6,21 +6,24 @@ export type LineChartData = {
   y: number[];
 }
 type LineChartProps = {
-  title: string;
   data: LineChartData;
+  children?: ReactNode;
 };
 
 const LineChart = ({
-  title,
   data,
+  children,
 }: LineChartProps) => {
 
   return (
-    <Plot
-      data={[data]}
-      layout={ { height: 640, title } }
-      config={{ responsive: true }}
-    />
+    <>
+      {children}
+      <Plot
+        data={[data]}
+        layout={ { height: 640 } }
+        config={{ responsive: true }}
+      />
+    </>
   );
 };
 

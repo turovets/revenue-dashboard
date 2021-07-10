@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 import Report, { ReportType } from '../../Report/Report';
 import {  ValueType } from '../types';
 import Switcher from '../../shared/Switcher/Switcher';
@@ -7,8 +9,6 @@ import {
   ProductCategoryService,
   TProductCategoriesRevenues
 } from '../../../services/productCategories/ProductCategoryService';
-import './CategoriesRevenues.scss';
-import LinearProgress from '@material-ui/core/LinearProgress';
 
 const CategoriesRevenues = () => {
   const [data, setData] = useState<TProductCategoriesRevenues[]>([]);
@@ -30,7 +30,7 @@ const CategoriesRevenues = () => {
   }, { x: [], y: [] }), [data, valueTypeFilter]);
 
   return (
-    <div className="CategoriesRevenues-root">
+    <div className="Dashboard-component-wrapper">
       {isLoading && <LinearProgress className="Dashboard-progress" />}
       <div className="Dashboard-filters">
         <Switcher onChangeHandler={setValueTypeFilter} activeItem={valueTypeFilter} items={Object.values(ValueType)} disabled={isLoading} /><div/>

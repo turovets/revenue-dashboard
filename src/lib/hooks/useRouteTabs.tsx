@@ -35,7 +35,7 @@ export const useRouteTabs = (config: Config): { reactRoutes: React.ReactElement,
   }, [config, location.pathname]);
 
   const tabs = (
-    <Tabs value={activeTabValue ?? config[0]?.tabUrl}>
+    <Tabs value={activeTabValue ?? config[0]?.tabUrl} variant="scrollable" scrollButtons="on">
       {tabsItems}
     </Tabs>
   );

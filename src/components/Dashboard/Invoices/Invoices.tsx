@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import './Invoices.scss';
 import { Invoice, InvoicesService } from '../../../services/invoices/InvoicesService';
 import { Period, ValueType } from '../types';
 import Report, { ReportType } from '../../Report/Report';
@@ -33,7 +32,7 @@ const Invoices = () => {
   }, [data, periodFilter, valueTypeFilter])
 
   return (
-    <div className="Invoices-root">
+    <div className="Dashboard-component-wrapper">
       {isLoading && <LinearProgress className="Dashboard-progress" />}
       <div className="Dashboard-filters">
         <Switcher onChangeHandler={setPeriodFilter} activeItem={periodFilter} items={Object.values(Period)} disabled={isLoading} />

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import Plot from 'react-plotly.js';
 
 export type BarChartData = {
@@ -6,21 +6,24 @@ export type BarChartData = {
   y: number[];
 }
 type BarChartProps = {
-  title: string;
   data: BarChartData;
+  children?: ReactNode;
 };
 
 const BarChart = ({
-  title,
   data,
+  children,
 }: BarChartProps) => {
 
   return (
-    <Plot
-      data={[{ ...data, type: 'bar' }]}
-      layout={ { height: 640, title } }
-      config={{ responsive: true }}
-    />
+    <>
+      {children}
+      <Plot
+        data={[{ ...data, type: 'bar' }]}
+        layout={ { height: 640 } }
+        config={{ responsive: true }}
+      />
+    </>
   );
 };
 

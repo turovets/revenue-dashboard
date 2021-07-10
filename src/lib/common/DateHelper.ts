@@ -35,7 +35,7 @@ export class DateHelper {
     return result;
   }
 
-  static getDateString(value: Date): string {
-   return value.toISOString();
+  static formatDateToString(date: TDateLike): string {
+   return date instanceof Date ? date.toLocaleDateString() : (new Date(date)).toLocaleDateString();
   }
 }
