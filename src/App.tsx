@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { MuiThemeProvider, StylesProvider, jssPreset } from '@material-ui/core/styles';
 import { create } from 'jss';
-
+import logo from './logo.svg';
 import { theme } from './styles/theme';
 import './App.css';
 
@@ -22,7 +22,10 @@ const App = ({ children }: Props) => {
       <MuiThemeProvider theme={theme}>
         <div className="App">
           <div className="container">
-            {children}
+            <header className="header"><img width="35px" height="35px" src={logo} alt="logo" /></header>
+            <div className="content">
+              {children}
+            </div>
           </div>
         </div>
       </MuiThemeProvider>

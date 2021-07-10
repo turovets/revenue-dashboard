@@ -1,0 +1,12 @@
+.header {
+  height: 60px;
+  width: 100%;
+  background: white;
+  margin-bottom: 30px;
+  padding: 10px 40px;
+}
+
+.content {
+  padding: 20px 40px;
+  background: white;
+}

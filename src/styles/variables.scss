@@ -1,0 +1,17 @@
+@use 'sass:color';
+
+// Colors
+$common-color-primary: #006CB7;
+$common-fontSize: 13px;
+$common-background-color: #F4F4F4;
+
+// Breakpoints
+$desktop-width: 960px;
+$globalContainerWidth: 1330px;
+
+//mixins
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
