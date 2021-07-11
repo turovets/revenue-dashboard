@@ -45,7 +45,7 @@ const LatestInvoicesTable = ({
 
   const columns: TableColumn[] = [
     { id: 'date', label: 'Date', minWidth: 170, format: (value) => DateHelper.formatDateToString(value) },
-    { id: 'customerName', label: 'Customer Name', minWidth: 100 },
+    { id: 'name', label: 'Customer Name', minWidth: 100 },
     { id: 'region', label: 'Region', minWidth: 100 },
     {
       id: 'total',
@@ -56,7 +56,7 @@ const LatestInvoicesTable = ({
     },
   ];
   return (
-    <div className="">
+    <div>
       <Report
         title="Latest Invoices"
         type={ReportType.Table}

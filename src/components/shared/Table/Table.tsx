@@ -16,13 +16,10 @@ export interface TableColumn {
 }
 
 const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    marginTop: '30px',
-  },
   container: {
     maxHeight: 570,
     boxShadow: '0 2px 4px 0 rgba(238, 238, 238, 0.5)',
+    marginBottom: '30px',
   },
 });
 

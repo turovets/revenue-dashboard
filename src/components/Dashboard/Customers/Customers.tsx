@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import './Customers.scss';
 import { CustomerRevenue, CustomersService } from '../../../services/customers/CustomersService';
 import { ValueType } from '../types';
 import Switcher from '../../shared/Switcher';
@@ -36,12 +37,11 @@ const Customers = () => {
   }, [data, valueTypeFilter])
 
   const columns: TableColumn[] = [
-    { id: 'name', label: 'Name', minWidth: 170 },
-    { id: 'invoicesNumber', align: 'center', label: 'Invoices Number', minWidth: 100 },
+    { id: 'name', label: 'Name' },
+    { id: 'invoicesNumber', align: 'center', label: 'Invoices Number' },
     {
       id: 'total',
       label: valueTypeFilter === ValueType.Revenues ? 'Total Revenue' : 'Total Margin',
-      minWidth: 170,
       align: 'right',
       format: (value) => value.toFixed(2),
     },
@@ -53,9 +53,7 @@ const Customers = () => {
       <div className="Dashboard-filters">
         <Switcher onChangeHandler={setValueTypeFilter} activeItem={valueTypeFilter} items={Object.values(ValueType)} disabled={isLoading} /><div/>
       </div>
-      {/*<h3 className="Dashboard-component-title"></h3>*/}
-      {/*<Table rows={rows} columns={columns} />*/}
-      <Report title="Our Best Customers" type={ReportType.Table} data={{ columns, rows }} />
+      <div className="Customers-table"><Report title="Our Best Customers" type={ReportType.Table} data={{ columns, rows }} /></div>
     </div>
   )
 }

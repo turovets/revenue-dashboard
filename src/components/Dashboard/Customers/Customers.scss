@@ -1,0 +1,7 @@
+@import 'src/styles/variables';
+
+.Customers-table {
+  @include desktop() {
+    width: 50%;
+  }
+}
