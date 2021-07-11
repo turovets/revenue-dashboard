@@ -7,6 +7,8 @@
   font-size: 15px;
   margin-top: 33px;
   margin-bottom: 20px;
+
+  &--table { text-align: left; }
 }
 
 .ReportsContainer-root {
@@ -17,5 +19,11 @@
     > div {
         flex: 1;
       }
+  }
+}
+
+.Report-table-wrapper {
+  @include desktop() {
+    width: 50%;
   }
 }

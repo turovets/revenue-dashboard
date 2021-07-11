@@ -1,29 +1,18 @@
-import { memo, ReactNode } from 'react';
+import React, { memo } from 'react';
 import Plot from 'react-plotly.js';
 
-export type LineChartData = {
+export type LineChartProps = {
   x: Date[];
   y: number[];
 }
-type LineChartProps = {
-  data: LineChartData;
-  children?: ReactNode;
-};
 
-const LineChart = ({
-  data,
-  children,
-}: LineChartProps) => {
-
+const LineChart: React.FC<LineChartProps> = (props) => {
   return (
-    <>
-      {children}
-      <Plot
-        data={[data]}
-        layout={ { height: 640 } }
-        config={{ responsive: true }}
-      />
-    </>
+    <Plot
+      data={[props]}
+      layout={ { height: 640 } }
+      config={{ responsive: true }}
+    />
   );
 };
 

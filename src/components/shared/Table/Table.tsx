@@ -23,8 +23,8 @@ const useStyles = makeStyles({
   },
 });
 
-type StickyHeadTableProps = {
-  noDataMsg: string;
+export type StickyHeadTableProps = {
+  noDataMsg?: string;
   rows: any[];
   columns: TableColumn[];
   children?: ReactNode;

@@ -1,29 +1,19 @@
-import { memo, ReactNode } from 'react';
+import { memo } from 'react';
 import Plot from 'react-plotly.js';
 
-export type BarChartData = {
+export type BarChartProps = {
   x: string[];
   y: number[];
 }
-type BarChartProps = {
-  data: BarChartData;
-  children?: ReactNode;
-};
 
-const BarChart = ({
-  data,
-  children,
-}: BarChartProps) => {
+const BarChart: React.FC<BarChartProps> = (props) => {
 
   return (
-    <>
-      {children}
-      <Plot
-        data={[{ ...data, type: 'bar' }]}
-        layout={ { height: 640 } }
-        config={{ responsive: true }}
-      />
-    </>
+    <Plot
+      data={[{ ...props, type: 'bar' }]}
+      layout={ { height: 640 } }
+      config={{ responsive: true }}
+    />
   );
 };
 
