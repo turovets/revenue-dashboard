@@ -1,0 +1,9 @@
+@import 'src/styles/variables';
+
+// TODO: for some reason library styles renders with bigger priority than component ones.
+//  Need to investigate and remove !important
+
+.LatestInvoicesTable-select {
+  width: 200px;
+  margin-bottom: 30px !important;
+}

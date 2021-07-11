@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
@@ -7,6 +7,7 @@ import { Period, ValueType } from '../types';
 import Report, { ReportType } from '../../Report/Report';
 import Switcher from '../../shared/Switcher/Switcher';
 import { InvoicesHelper } from './helper';
+import LatestInvoicesTable from './LatestInvoicesTable';
 
 const Invoices = () => {
   const [data, setData] = useState<Invoice[]>([]);
@@ -39,6 +40,7 @@ const Invoices = () => {
         <Switcher onChangeHandler={setValueTypeFilter} activeItem={valueTypeFilter} items={Object.values(ValueType)} disabled={isLoading} />
       </div>
       <Report title="Monthly Cumulative Invoices Revenues" type={ReportType.Line} data={tData} />
+      <LatestInvoicesTable invoices={data} valueTypeFilter={valueTypeFilter} dates={tData.x} />
     </div>
   )
 }
