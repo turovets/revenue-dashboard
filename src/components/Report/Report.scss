@@ -8,3 +8,14 @@
   margin-top: 33px;
   margin-bottom: 20px;
 }
+
+.ReportsContainer-root {
+  @include desktop() {
+    display: flex;
+    gap: 30px;
+
+    > div {
+        flex: 1;
+      }
+  }
+}

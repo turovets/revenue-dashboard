@@ -4,6 +4,7 @@ import { useRouteTabs } from '../../lib/hooks/useRouteTabs';
 import CategoriesRevenue from './CategoriesRevenues';
 import Invoices from './Invoices';
 import Customers from './Customers';
+import LatestInvoices from './Invoices/LatestInvoices';
 
 const TabBuilder = () => {
   const routes = useMemo(() => [
@@ -16,6 +17,11 @@ const TabBuilder = () => {
       label: 'Categories Revenues',
       TabComponent: CategoriesRevenue,
       tabUrl: '/dashboard/categories-revenues',
+    },
+    {
+      label: 'Latest Invoices',
+      TabComponent: LatestInvoices,
+      tabUrl: '/dashboard/latest-invoices',
     },
     {
       label: 'Best Customers',
