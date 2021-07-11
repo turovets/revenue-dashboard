@@ -1,10 +1,8 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
 
 import './Invoices.scss';
 import { Invoice, InvoicesService } from '../../../services/invoices/InvoicesService';
@@ -21,7 +19,7 @@ const Invoices = () => {
   const [data, setData] = useState<Invoice[]>([]);
   const [valueTypeFilter, setValueTypeFilter] = useState<ValueType>(ValueType.Revenues);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedInvoicesDate, setSelectedInvoicesDate] = useState('');
+  const [selectedInvoicesDate, setSelectedInvoicesDate] = useState<string>('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,36 +33,23 @@ const Invoices = () => {
     setSelectedInvoicesDate(event.target.value as string)
   }, []);
 
-  // const tData = useMemo(() => {
-  //   const cumulativeData = InvoicesHelper.prepareData(data, { period: periodFilter, valueType: valueTypeFilter });
-  //   return cumulativeData.reduce<{ x: Date[], y: number[] }>((acc, curr) => {
-  //     acc.x.push(new Date(curr.date));
-  //     acc.y.push(curr.value);
-  //     return acc;
-  //   }, { x: [], y: [] })
-  // }, [data, periodFilter, valueTypeFilter])
+  const mapperCallback = (i: Invoice) => ({
+    date: i.date,
+    name: i.customer_name,
+    region: i.region,
+    total: valueTypeFilter === ValueType.Revenues ? i.total_invoice : i.total_margin
+  });
 
   const latestRows = useMemo(() => {
     return [...data].sort((a, b) => a.date < b.date ? 1 : -1)
-      .map((i) => ({
-        date: i.date,
-        name: i.customer_name,
-        region: i.region,
-        total: valueTypeFilter === ValueType.Revenues ? i.total_invoice : i.total_margin
-      }))
+      .map(mapperCallback)
       .slice(0, LATEST_INVOICES_COUNT)
   }, [data, valueTypeFilter])
 
   const rows = useMemo(() => {
     return [...data]
-      .filter((i) => DateHelper.formatDateToString(i.date) === selectedInvoicesDate)
-      .map((i) => ({
-        date: i.date,
-        name: i.customer_name,
-        region: i.region,
-        total: valueTypeFilter === ValueType.Revenues ? i.total_invoice : i.total_margin
-      }))
-      .slice(0, LATEST_INVOICES_COUNT)
+      .filter((i) => i.date === selectedInvoicesDate)
+      .map(mapperCallback)
   }, [data, valueTypeFilter, selectedInvoicesDate])
 
   const columns: TableColumn[] = [
@@ -106,22 +91,18 @@ const Invoices = () => {
               : 'Please select the date to see invoices'
           }}
         >
-          <FormControl className="LatestInvoicesTable-select">
-            <InputLabel id="invoices-date-label">Date</InputLabel>
-            <Select
-              labelId="invoices-date-label"
+          <FormControl className="LatestInvoicesTable-date-field-wrapper">
+            <TextField
+              id="date"
+              label="Invoices Date"
+              type="date"
+              className="LatestInvoicesTable-date-field"
               value={selectedInvoicesDate}
               onChange={onInvoicesDateChange}
-              displayEmpty
-              placeholder="Select Date"
-            >
-              {['2021-07-07'].map((date) => {
-                const localDate = DateHelper.formatDateToString(date);
-                return (
-                  <MenuItem key={localDate} value={localDate}>{localDate}</MenuItem>
-                )
-              })}
-            </Select>
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </FormControl>
         </Report></div>
       </ReportsContainer>

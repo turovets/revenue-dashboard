@@ -3,7 +3,10 @@
 // TODO: for some reason library styles renders with bigger priority than component ones.
 //  Need to investigate and remove !important
 
-.LatestInvoicesTable-select {
-  width: 200px;
-  margin-bottom: 30px !important;
+.LatestInvoicesTable-date-field {
+  input { color: $common-text-main !important; }
+  &-wrapper {
+    width: 200px;
+    margin-bottom: 30px !important;
+  }
 }
