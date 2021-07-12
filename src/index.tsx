@@ -15,7 +15,7 @@ ReactDOM.render(
         <Switch>
           <Route
             exact path="/"
-            render={() => <Redirect to={routes.dashboard} />}
+            render={() => <Redirect to={routes.dashboard + '/invoices'} />}
           />
           <Route
             path={routes.dashboard}
