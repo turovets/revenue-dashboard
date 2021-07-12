@@ -14,9 +14,9 @@ export interface ReportProps {
 }
 
 export enum ReportType {
-  Bar,
-  Line,
-  Table
+  Bar = 'Bar',
+  Line = 'Line',
+  Table = 'Table',
 }
 
 const Report = ({
