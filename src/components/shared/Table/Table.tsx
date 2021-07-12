@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import './Table.scss';
 
 export interface TableColumn {
   id: string;
@@ -37,7 +38,7 @@ const StickyHeadTable = ({ rows, columns, noDataMsg, children }: StickyHeadTable
     return (
       <>
         {children}
-        <div style={{ textAlign: 'center', border: '1px solid #f4f4f4', padding: '20px' }}>{noDataMsg}</div>
+        <div className="Table-no-data-msg">{noDataMsg}</div>
       </>
     )
   }

@@ -1,0 +1,7 @@
+@import 'src/styles/variables';
+
+.Table-no-data-msg {
+  text-align: center;
+  border: 1px solid $common-background-color;
+  padding: 20px;
+}
